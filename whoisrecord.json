@@ -1,0 +1,19 @@
+[
+    {
+        "IP": "1.1.1.1",
+        "Network Name": "APNIC-LABS",
+        "Registrar": "apnic",
+        "ASN": "13335",
+        "ASN Country": "AU",
+        "ASN Date": "2011-08-11",
+        "ASN Description": "CLOUDFLARENET, US",
+        "Network CIDR": "1.1.1.0/24",
+        "Network Start": "1.1.1.0",
+        "Network End": "1.1.1.255",
+        "Network Country": "AU",
+        "Reputation Score": 0,
+        "Last Reported": "2024-05-22T16:38:41+00:00",
+        "Number of Reports": 32,
+        "Country": "US"
+    }
+]

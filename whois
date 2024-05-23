@@ -1,0 +1,53 @@
+from ipwhois import IPWhois
+import csv
+
+def whois_lookup(ip_list):
+    results = []
+    for ip in ip_list:
+        try:
+            obj = IPWhois(ip)
+            res = obj.lookup_rdap()
+            results.append({
+                "IP": ip,
+                "Network Name": res.get('network', {}).get('name', 'N/A'),
+                "Registrar": res.get('asn_registry', 'N/A'),
+                "ASN": res.get('asn', 'N/A'),
+                "ASN Country": res.get('asn_country_code', 'N/A'),
+                "ASN Date": res.get('asn_date', 'N/A'),
+                "ASN Description": res.get('asn_description', 'N/A'),
+                "Network CIDR": res.get('network', {}).get('cidr', 'N/A'),
+                "Network Start": res.get('network', {}).get('start_address', 'N/A'),
+                "Network End": res.get('network', {}).get('end_address', 'N/A'),
+                "Network Country": res.get('network', {}).get('country', 'N/A')
+            })
+        except Exception as e:
+            print(f"Error looking up {ip}: {e}")
+            results.append({
+                "IP": ip,
+                "Network Name": "N/A",
+                "Registrar": "N/A",
+                "ASN": "N/A",
+                "ASN Country": "N/A",
+                "ASN Date": "N/A",
+                "ASN Description": "N/A",
+                "Network CIDR": "N/A",
+                "Network Start": "N/A",
+                "Network End": "N/A",
+                "Network Country": "N/A"
+            })
+    return results
+
+def write_to_csv(data, filename='whoisrecord.csv'):
+    with open(filename, mode='w', newline='', encoding='utf-8') as file:
+        writer = csv.DictWriter(file, fieldnames=data[0].keys())
+        writer.writeheader()
+        writer.writerows(data)
+
+def main():
+    ip_list = input("Enter IP addresses separated by commas: ").split(',')
+    ip_list = [ip.strip() for ip in ip_list]
+    results = whois_lookup(ip_list)
+    write_to_csv(results)
+
+if __name__ == '__main__':
+    main()
