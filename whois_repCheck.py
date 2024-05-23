@@ -2,7 +2,7 @@ from ipwhois import IPWhois
 import requests
 import json
 
-API_KEY = 'YOUR_API_KEY'
+API_KEY = 'YOUR_API_KEY' #just paste your actual abuseipdb api key here
 
 def whois_lookup(ip_list):
     results = []
@@ -51,7 +51,7 @@ def check_reputation(ip):
         url = f"https://api.abuseipdb.com/api/v2/check"
         headers = {
             'Accept': 'application/json',
-            'Key': 'YOUR_API_KEY'
+            'Key': 'YOUR_API_KEY' #api key goes here as well
         }
         params = {
             'ipAddress': ip,
