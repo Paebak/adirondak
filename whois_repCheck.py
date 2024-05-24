@@ -89,6 +89,9 @@ if __name__ == '__main__':
     main()
 
 
+# OLD CODE VVVV #
+
+
 
 # from ipwhois import IPWhois
 # import csv
